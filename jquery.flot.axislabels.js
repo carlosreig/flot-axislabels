@@ -188,13 +188,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             '-o-transform': '',
             '-ms-transform': ''
         };
-        if (x != 0 || y != 0) {
-            var stdTranslate = ' translate(' + x + 'px, ' + y + 'px)';
-            stransforms['-moz-transform'] += stdTranslate;
-            stransforms['-webkit-transform'] += stdTranslate;
-            stransforms['-o-transform'] += stdTranslate;
-            stransforms['-ms-transform'] += stdTranslate;
-        }
+
         if (degrees != 0) {
             var rotation = degrees / 90;
             var stdRotate = ' rotate(' + degrees + 'deg)';
@@ -203,7 +197,9 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
             stransforms['-o-transform'] += stdRotate;
             stransforms['-ms-transform'] += stdRotate;
         }
-        var s = 'top: 0; left: 0; ';
+    	
+        var s = 'top: ' + y + 'px; left: ' + x + 'px; ';
+		
         for (var prop in stransforms) {
             if (stransforms[prop]) {
                 s += prop + ':' + stransforms[prop] + ';';
